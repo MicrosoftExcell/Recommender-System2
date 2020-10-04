@@ -1,0 +1,70 @@
+<head>
+    <link rel="stylesheet" href='/static/style.css' />
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript">
+</script>
+<title>Recommendations</title>
+<form method="POST" action="/backhome">
+    <button type="submit" class="button log-out" class="log-out">Change User</button>
+</form>
+<h1>User Profile</h1>
+<div id="wrapper">
+<div id="left-wrapper">
+<div id = "user-profile">
+<h2>User Details</h2>
+<p>User ID: {{userid}}</p>
+<p>User State: {{userstate}}</p>
+<p>User Timezone: {{usertime}}</p>
+</div>
+<div id = "search-profile">
+<h2>Search Details</h2>
+<p>City: {{city}}</p>
+<p>State: {{selected}}</p>
+<p>Trip Type: {{ttype}}</p>
+<form method="POST" action="/gotosearch">
+    <button type="submit" class="button">Change Search</button>
+</form>
+</div>
+<div id = "prev-profile">
+<h2>Previous Ratings</h2>
+<table>
+    <tr>
+        <th>Property ID</th>
+        <th>Rating</th>
+        <th>City</th>
+        <th>Trip Type</th>
+    </tr>
+    {% for rating in ratings %}
+    <tr>
+        <td>{{rating[0]}}</td>
+        <td>{{rating[1]}}</td>
+        <td>{{rating[2]}}</td>
+        <td>{{rating[3]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+<div id = "rec-profile">
+<h2>Top 10 Recommendations</h2>
+<table>
+    <tr>
+        <th>Property ID</th>
+        <th>Predicted Rating</th>
+        <th>Location</th>
+        <th>Trip Type</th>
+        <th>Number of Ratings</th>
+    </tr>
+    {% for rec in recommendations %}
+    <tr>
+        <td>{{rec[0]}}</td>
+        <td>{{rec[5]}}</td>
+        <td>{{rec[2]}}</td>
+        <td>{{rec[4]}}</td>
+        <td>{{rec[1]}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
